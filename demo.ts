@@ -1,7 +1,7 @@
-class Persons {
-  name: string;
-  age: number;
-  hobbies: string[];
+export class Persons {
+  public name: string;
+  public age: number;
+  public hobbies: string[];
 
   constructor(name: string, age: number, hobbies: string[]) {
     this.name = name;
@@ -19,12 +19,17 @@ class Persons {
 class Students extends Persons {
   grade: number;
   constructor(name: string, age: number, hobbies: string[], grade: number) {
-    super((name = name), (age = age), (hobbies = hobbies));
+    super(name, age, hobbies);
     this.grade = grade;
   }
 
   introduce(): string {
-    return `${super.introduce()}, I'm in grade ${this.grade}`;
+    // return `${super.introduce()}, I'm in grade ${this.grade}`;
+    return ` I'm in grade ${this.grade}`;
+  }
+
+  introduce2(): string {
+    return this.introduce();
   }
 }
 
@@ -34,4 +39,4 @@ const person2 = new Persons("Josh", 21, ["cooking", "drawing"]);
 const student1 = new Students("Jake", 41, ["running", "reading"], 12);
 
 console.log(person1.introduce());
-console.log(student1.introduce());
+console.log(student1.introduce2());
